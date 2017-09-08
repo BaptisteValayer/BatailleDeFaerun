@@ -30,15 +30,23 @@ public class Board {
 		this.boardSize = boardSize;
 	}
 	
-	public void rightToLeft(Square goOut) {
-		int index = board.indexOf(goOut);
-		board.set(index--, goOut);
-		System.out.println("win");
+	public void rightToLeft(int squareIndex) {
+		System.out.println("here"+squareIndex);
+		board.set(squareIndex-1, board.get(squareIndex));
+		board.remove(squareIndex);
 	}
 	
-	public void leftToRight(Square goOut) {
-		int index = board.indexOf(goOut);
-		board.set(index++, goOut);
-		System.out.println("win");
+	public void leftToRight(int squareIndex) {
+		System.out.println("here"+squareIndex);
+		board.set(squareIndex+1, board.get(squareIndex));
+		board.get(squareIndex).getSquare().clear();
+	}
+	
+	public void deployBlueUnit(Warrior warriorBlue) {
+		board.get(0).getSquare().add(warriorBlue);
+	}
+	
+	public void deployRedUnit(Warrior warriorRed) {
+		board.get(board.size()-1).getSquare().add(warriorRed);
 	}
 }
