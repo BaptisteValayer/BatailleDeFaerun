@@ -16,7 +16,7 @@ public class Board {
 		return board;
 	}
 
-	public void initBoard() {
+	public void initEmptyBoard() {
 		for(int i=0;i<this.boardSize;i++) {
 			board.add(new Square());
 		}
@@ -30,17 +30,23 @@ public class Board {
 		this.boardSize = boardSize;
 	}
 	
-	public void rightToLeft(int squareIndex) {
-		System.out.println("here"+squareIndex);
-		board.set(squareIndex-1, board.get(squareIndex));
-		board.remove(squareIndex);
-	}
-	
-	public void leftToRight(int squareIndex) {
-		System.out.println("here"+squareIndex);
-		board.set(squareIndex+1, board.get(squareIndex));
-		board.get(squareIndex).getSquare().clear();
-	}
+//	public void rightToLeft() {
+//		ArrayList<Warrior> temporaire = new ArrayList<>(); 
+//		for(int index=(this.boardSize-2);index>=0;index--) {
+//			temporaire=this.board.get(index).getSquare();
+//			this.board.get(index).getSquare().clear();
+//			this.board.get(index+1).getSquare().addAll(temporaire);
+//		}
+//	}
+//	
+//	public void leftToRight() {
+//		ArrayList<Warrior> temporaire = new ArrayList<>(); 
+//		for(int index=1;index<this.boardSize;index++) {
+//			temporaire=this.board.get(index).getSquare();
+//			this.board.get(index).getSquare().clear();
+//			this.board.get(index-1).getSquare().addAll(temporaire);
+//		}
+//	}
 	
 	public void deployBlueUnit(Warrior warriorBlue) {
 		board.get(0).getSquare().add(warriorBlue);
@@ -49,4 +55,5 @@ public class Board {
 	public void deployRedUnit(Warrior warriorRed) {
 		board.get(board.size()-1).getSquare().add(warriorRed);
 	}
+	
 }
