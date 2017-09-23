@@ -16,4 +16,8 @@ public class Goblin extends Warrior {
 			warrior.looseLifePoint(randomDamage.nextInt(20)+10);
 		}
 	}
+	
+	public Goblin() {
+		super();
+	}
 }

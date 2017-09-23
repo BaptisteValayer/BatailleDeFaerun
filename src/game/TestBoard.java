@@ -1,37 +1,75 @@
 package game;
 
+import java.util.ArrayList;
+
 public class TestBoard {
 
 	public static void main(String[] args) {
-		Board board = new Board(5);
+		Castle b = new Castle("salut");
+		Castle r = new Castle("pasSalut");
+		Board board = new Board(5,r,b);
+		
 		Elf legolas = new Elf();
-		Elf legolas2 = new Elf();
-		//Dwarf Gimli	= new Dwarf();
+		//Elf legolas2 = new Elf();
+		Dwarf Gimli	= new Dwarf();
 		//Dwarf Gimli2 = new Dwarf();
 		board.initEmptyBoard();
-		System.out.println(board.getBoard());
-		//board.deployBlueUnit(Gimli);
-		//board.deployBlueUnit(Gimli2);
-		board.deployRedUnit(legolas);
-		board.getBoard().get(3).getSquare().add(legolas2);
-		for(int x=0;x<board.getBoard().size();x++) {
-			System.out.println("Turn "+x);
-			afficheBoard(board.getBoard().size(),board);
-			//board.leftToRight();
-			//board.rightToLeft(board.getBoard().get(x));
-//			if(x>=1) {
-//				board.getBoard().get(x-1).goOut(legolas);
-//				System.out.println("caseprécédente->"+(x-1)+board.getBoard().get(x).getSquare());
-//			}
-//			board.getBoard().get(x).goIn(legolas);
-//			System.out.println("casedujour->"+x+board.getBoard().get(x).getSquare());
-		}
+		//System.out.println(board.getBoard());
+		ArrayList<Warrior> t = new ArrayList<>();
+		t.add(Gimli);
+//		afficheBoard(board.getBoardSize(),board);
+//		b.warriorOrder(legolas);
+//		b.warriorOrder(legolas);
+//		b.warriorOrder(legolas);
+//		System.out.println(b.getWarriorOnStandby());
+//		b.trainWarrior();
+//		System.out.println(b.getWarriorToDeploy());
+//		board.deployBlueUnit();
+//		//System.out.println(b.getWarriorToDeploy());
+//		afficheBoard(board.getBoardSize(),board);
+//		board.move();
+//		afficheBoard(board.getBoardSize(),board);
+		
+//		afficheBoard(board.getBoardSize(),board);
+//		r.warriorOrder(legolas);
+//		r.warriorOrder(legolas);
+//		r.warriorOrder(legolas);
+//		System.out.println(r.getWarriorOnStandby());
+//		r.trainWarrior();
+//		System.out.println(r.getWarriorToDeploy());
+//		board.deployRedUnit();
+//		//System.out.println(b.getWarriorToDeploy());
+//		afficheBoard(board.getBoardSize(),board);
+//		board.move();
+//		afficheBoard(board.getBoardSize(),board);
+		
+		b.warriorOrder(legolas);
+		b.warriorOrder(legolas);
+		b.warriorOrder(legolas);
+		r.warriorOrder(legolas);
+		r.warriorOrder(legolas);
+		r.warriorOrder(legolas);
+		board.getBoard().get(1).setBlueArmy(t);
+		b.trainWarrior();
+		r.trainWarrior();
+		board.deployBlueUnit();
+		board.deployRedUnit();
+		afficheBoard(board.getBoardSize(),board);
+		board.move();
+		afficheBoard(board.getBoardSize(),board);
+		board.move();
+		afficheBoard(board.getBoardSize(),board);
+		board.move();
+		afficheBoard(board.getBoardSize(),board);
+		board.move();
+		afficheBoard(board.getBoardSize(),board);
 	}
 
 	public static void afficheBoard(int size, Board board) {
 		for(int s=0;s<size;s++) {
 			System.out.println("Case -> "+s);
-			System.out.println(board.getBoard().get(s).getSquare());
+			System.out.println("B -> "+board.getBoard().get(s).getBlueArmy());
+			System.out.println("R -> "+board.getBoard().get(s).getRedArmy());
 		}
 	}
 }

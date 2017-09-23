@@ -11,11 +11,20 @@ public class Castle {
 	private String name;
 	
 	/**
-	 * castle resource available start with 3
+	 * castle resource available start with 5
 	 */
-	private int availableResource = 3;
+	private int availableResource = 5;
 	
+	/**
+	 * List use to see order of the castle
+	 */
 	private List<Warrior> warriorOnStandby = new ArrayList<>();
+	
+	/**
+	 * List use to see all the warrior ready to deploy 
+	 */
+	private List<Warrior> warriorToDeploy = new ArrayList<>();
+
 
 	/**
 	 * Castle class constructor
@@ -42,9 +51,11 @@ public class Castle {
 
 	/**
 	 * remove warrior to list warriorOnStandby and decrease ressource'qantity
+	 * add warrior to list warriorToDeploy
 	 * @param firstWarrior
 	 */
 	public void Create(Warrior firstWarrior) {
+		warriorToDeploy.add(firstWarrior);
 		warriorOnStandby.remove(0);
 		decreaseRessource(firstWarrior.getCost());
 	}
@@ -59,12 +70,13 @@ public class Castle {
 	}
 
 	/**
-	 * commmand warrior
+	 * Command warrior
 	 * @param warriorOrdered
 	 */
 	public void warriorOrder(Warrior warriorOrdered) {
 		warriorOnStandby.add(warriorOrdered);
 	}
+	
 	/**
 	 * increase castle available resource by 'resourceWin'
 	 * @param resourceWin
@@ -102,4 +114,9 @@ public class Castle {
 	public List<Warrior> getWarriorOnStandby() {
 		return warriorOnStandby;
 	}
+	
+	public List<Warrior> getWarriorToDeploy() {
+		return warriorToDeploy;
+	}
+
 }
